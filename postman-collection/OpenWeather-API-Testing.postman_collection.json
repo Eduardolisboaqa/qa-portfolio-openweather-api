@@ -1,0 +1,379 @@
+{
+  "info": {
+    "_postman_id": "d285bf13-dcfd-43c5-950d-b583a1ea59a6",
+    "name": "OpenWeatherMap API - QA Testing Portfolio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54315018",
+    "_collection_link": "https://go.postman.co/collection/54315018-d285bf13-dcfd-43c5-950d-b583a1ea59a6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01 - Current Weather - Positive Tests",
+      "item": [
+        {
+          "name": "TC001 - Get Current Weather by City - Positive Test",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains city name\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response).to.have.property(\"name\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Temperature is a number\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.main.temp).to.be.a(\"number\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Humidity is between 0 and 100\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.main.humidity).to.be.at.least(0);\r",
+                  "    pm.expect(response.main.humidity).to.be.at.most(100);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Wind speed is a number\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.wind.speed).to.be.a(\"number\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "q",
+                "value": "Madrid",
+                "type": "text"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{x-api-key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=madrid&appid={{x-api-key}}&units=metric",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "madrid"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{x-api-key}}"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC002 - Get Current Weather by City - Data Validation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "q",
+                "value": "Madrid",
+                "type": "text"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{x-api-key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=madrid&units=metric&appid={{x-api-key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "madrid"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{x-api-key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Current Weather - Negative Tests",
+      "item": [
+        {
+          "name": "TC003 - Get Weather with Invalid City - Negative Test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=ananindeua&appid={{x-api-key}}&units=metric",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "ananindeua"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{x-api-key}}"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC004 - Get Weather without API Key - Negative Test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}?q=madrid&units=metric",
+              "host": [
+                "{{base_url}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "madrid"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC005 - Get Weather with Invalid API Key - Negative Test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/weather?q=madrid&appid=test0001&units=metric",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "madrid"
+                },
+                {
+                  "key": "appid",
+                  "value": "test0001"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 - Query Parameters",
+      "item": [
+        {
+          "name": "TC006 - Get Weather in Portuguese - Language Parameter Test",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "q",
+                "value": "Madrid",
+                "type": "text"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{x-api-key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=belem&lang=pt_br&appid={{x-api-key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "belem"
+                },
+                {
+                  "key": "lang",
+                  "value": "pt_br"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{x-api-key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 - Postman Flow",
+      "item": [
+        {
+          "name": "TC007 - Get Weather List Flow - Multiple Cities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{x-api-key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q={{city_list}}&appid={{x-api-key}}&units=metric",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "{{city_list}}"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{x-api-key}}"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "x-api-key",
+      "value": ""
+    },
+    {
+      "key": "city_list",
+      "value": ""
+    },
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
