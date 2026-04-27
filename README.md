@@ -66,7 +66,7 @@ qa-portfolio-openweather-api/
 └── test-summary/
 ```
 
-##Security Note
+## Security Note
 
 The API key used in this project was removed for security reasons.
 
@@ -74,18 +74,18 @@ In Postman, the API key should be stored as an environment variable:
 
 {{api_key}}
 
-##Evidence
+## Evidence
 
 Screenshots of the test executions are available in the /evidence folder.
 
-##Postman Collection
+## Postman Collection
 
 The exported Postman collection is available in the /postman-collection folder.
 
-##Test Summary
+## Test Summary
 
 The final test execution summary is available in the /test-summary folder.
 
-##Conclusion
+ ## Conclusion
 
 This project helped me practice API testing fundamentals, including endpoint validation, status code verification, response body analysis, error handling and technical documentation.
