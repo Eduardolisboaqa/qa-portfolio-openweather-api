@@ -48,7 +48,6 @@ The following fields were validated in the API response:
 - City name
 - Temperature
 - Humidity
-- Weather description
 - Wind speed
 - Status code
 - Error messages
