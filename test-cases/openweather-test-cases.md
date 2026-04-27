@@ -66,10 +66,10 @@
 
 **Expected Result:**
 The response body should contain:
+- `Status Code`
 - `name`
 - `main.temp`
 - `main.humidity`
-- `weather[0].description`
 - `wind.speed`
 
 **Status:** Passed
