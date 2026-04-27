@@ -4,7 +4,7 @@
 
 **Endpoint:** `/data/2.5/weather`  
 **Method:** GET  
-**Parameter:** `q=Madrid`  
+**Parameter:** `q=madrid`  
 **Expected Status Code:** 200  
 
 **Expected Result:**
@@ -19,7 +19,7 @@
 
 **Endpoint:** `/data/2.5/weather`  
 **Method:** GET  
-**Parameter:** `q=PastosBons`  
+**Parameter:** `q=pastosbons`  
 **Expected Status Code:** 404  
 
 **Expected Result:**
@@ -33,7 +33,7 @@
 
 **Endpoint:** `/data/2.5/weather`  
 **Method:** GET  
-**Parameter:** `q=Madrid`  
+**Parameter:** `q=madrid`  
 **Expected Status Code:** 401  
 
 **Expected Result:**
@@ -47,7 +47,7 @@
 
 **Endpoint:** `/data/2.5/weather`  
 **Method:** GET  
-**Parameter:** `q=Madrid&appid=invalid_key`  
+**Parameter:** `q=madrid&appid=invalid_key`  
 **Expected Status Code:** 401  
 
 **Expected Result:**
@@ -61,7 +61,7 @@
 
 **Endpoint:** `/data/2.5/weather`  
 **Method:** GET  
-**Parameter:** `q=Madrid`  
+**Parameter:** `q=madrid`  
 **Expected Status Code:** 200  
 
 **Expected Result:**
