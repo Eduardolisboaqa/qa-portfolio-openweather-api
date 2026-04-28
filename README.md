@@ -75,7 +75,7 @@ In Postman, the API key should be stored as an environment variable:
 
 ## Evidence
 
-Screenshots of the test executions are available in the /evidence folder.
+Screenshots of the test executions are available in the `/evidence folder`.
 
 ## Postman Collection
 
