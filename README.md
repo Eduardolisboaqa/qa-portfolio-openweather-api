@@ -34,7 +34,7 @@ The following scenarios were tested:
 ## Test Cases
 
 | ID | Scenario | Expected Status | Status |
-|----|----------|----------------:|--------|
+|----|----------|----------------|--------|
 | TC001 | Get weather by valid city name | 200 OK | Passed |
 | TC002 | Get weather using invalid city name | 404 Not Found | Passed |
 | TC003 | Request without API key | 401 Unauthorized | Passed |
