@@ -71,7 +71,7 @@ The API key used in this project was removed for security reasons.
 
 In Postman, the API key should be stored as an environment variable:
 
-{{api_key}}
+`{{api_key}}`
 
 ## Evidence
 
